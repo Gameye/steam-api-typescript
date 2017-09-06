@@ -4,6 +4,15 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "class-name": false,
+        "interface-name": false,
+        "max-classes-per-file": false,
+        "curly": false,
+        "arrow-parens": false,
+        "object-literal-sort-keys": [
+            "match-declaration-order"
+        ]
+    },
     "rulesDirectory": []
 }
