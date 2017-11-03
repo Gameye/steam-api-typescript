@@ -6,8 +6,13 @@ export interface SteamApiConfig {
 }
 
 export abstract class SteamApiBase {
-    constructor(private config: SteamApiConfig) {
+    private config: SteamApiConfig = {
+        ApiEndpoint: "http://api.steampowered.com/",
+        ApiKey: "",
+    };
 
+    constructor(config: Partial<SteamApiConfig>) {
+        this.config = { ...this.config, ...config };
     }
 
     public async fetch(
