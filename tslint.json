@@ -12,7 +12,9 @@
         "object-literal-sort-keys": [
             true,
             "match-declaration-order"
-        ]
+        ],
+        "max-classes-per-file": false,
+        "class-name": false
     },
     "rulesDirectory": []
 }
