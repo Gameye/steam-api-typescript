@@ -13,3 +13,8 @@ the `--no-verify` or `-n` option of git commit, like this:
 ```bash
 git commit -nm'some commit message'
 ```
+
+# building the API
+You can build a new API interface base upon the `steam-api.json` file by running
+`npm run build-api`. This allows for easy upgrading the api from the JSON
+description provided by steam via `https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v1/`.

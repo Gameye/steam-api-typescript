@@ -103,6 +103,9 @@ export class ISteamDirectory extends SteamInterfaceBase {
     public GetCMList1(cellid: number, maxcount: number) {
         return this.fetch("GET", "GetCMList", 1, { cellid, maxcount });
     }
+    public GetCSList1(cellid: number, maxcount: number) {
+        return this.fetch("GET", "GetCSList", 1, { cellid, maxcount });
+    }
 }
 export class ISteamEnvoy extends SteamInterfaceBase {
     constructor(api: SteamApi) {
