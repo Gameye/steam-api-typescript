@@ -46,17 +46,28 @@ export function buildApi(apiDescriptor: SteamApiDescriptor) {
 }
 
 function createApiNodeList(apiDescriptor: SteamApiDescriptor) {
-    const importBase = ts.createImportDeclaration(
+    const importApiBase = ts.createImportDeclaration(
         undefined,
         undefined,
         ts.createImportClause(
             undefined,
             ts.createNamedImports([
                 ts.createImportSpecifier(undefined, ts.createIdentifier("SteamApiBase")),
+            ]),
+        ),
+        ts.createLiteral("./steam-api-base"),
+    );
+
+    const importInterfaceBase = ts.createImportDeclaration(
+        undefined,
+        undefined,
+        ts.createImportClause(
+            undefined,
+            ts.createNamedImports([
                 ts.createImportSpecifier(undefined, ts.createIdentifier("SteamInterfaceBase")),
             ]),
         ),
-        ts.createLiteral("."),
+        ts.createLiteral("./steam-interface-base"),
     );
 
     const interfaceClassList = apiDescriptor.apilist.interfaces.
@@ -65,7 +76,8 @@ function createApiNodeList(apiDescriptor: SteamApiDescriptor) {
     const apiClassItem = createApiClass(apiDescriptor);
 
     return ts.createNodeArray([
-        importBase,
+        importApiBase,
+        importInterfaceBase,
         apiClassItem,
         ...interfaceClassList,
     ]);

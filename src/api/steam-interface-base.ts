@@ -1,5 +1,3 @@
-import "fetch";
-
 import { SteamApiBase } from ".";
 
 export abstract class SteamInterfaceBase {

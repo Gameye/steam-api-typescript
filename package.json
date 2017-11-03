@@ -4,6 +4,9 @@
   "description": "",
   "main": "./obj/main.js",
   "types": "./obj/main.d.ts",
+  "bin": {
+    "steam-api": "./obj/cli.js"
+  },
   "scripts": {
     "prepare": "npm run compile",
     "build-api": "ts-node src/build-api",

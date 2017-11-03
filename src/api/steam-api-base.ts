@@ -1,4 +1,4 @@
-import "fetch";
+import "isomorphic-fetch";
 
 export interface SteamApiConfig {
     ApiEndpoint: string;

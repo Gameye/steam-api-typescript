@@ -1,6 +1,7 @@
 // tslint:disable:max-line-length
 // tslint:disable:variable-name
-import { SteamApiBase, SteamInterfaceBase } from ".";
+import { SteamApiBase } from "./steam-api-base";
+import { SteamInterfaceBase } from "./steam-interface-base";
 export class SteamApi extends SteamApiBase {
     public readonly IGCVersion_205790 = new IGCVersion_205790(this);
     public readonly IGCVersion_440 = new IGCVersion_440(this);
