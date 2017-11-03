@@ -1,4 +1,5 @@
 import "isomorphic-fetch";
+import * as querystring from "querystring";
 
 export interface SteamApiConfig {
     ApiEndpoint: string;
@@ -21,15 +22,24 @@ export abstract class SteamApiBase {
         body: any,
     ) {
         const { ApiEndpoint, ApiKey } = this.config;
+        const query = {
+            ...(requestMethod === "GET" ? body : {}),
+            ...{ format: "json", key: ApiKey },
+        };
         const url =
             `${ApiEndpoint}/${interfaceName}/${methodName}/v${version}?` +
-            `format=json&key=${ApiKey}`;
+            querystring.stringify(query);
 
-        const result = await fetch(url, {
-            method: requestMethod,
-        });
-        if (!result.ok) throw new Error(`unexpected status ${result.status}`);
-        const data = await result.json();
+        const req = {
+            ...(requestMethod === "POST" ? {
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            } : {}),
+            ...{ method: requestMethod },
+        };
+        const res = await fetch(url, req);
+        if (!res.ok) throw new Error(`unexpected status ${res.status}`);
+        const data = await res.json();
         return data;
     }
 
