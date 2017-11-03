@@ -1,6 +1,6 @@
 {
   "name": "tsprimer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "./obj/main.js",
   "types": "./obj/main.d.ts",
