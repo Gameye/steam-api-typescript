@@ -5,16 +5,14 @@
     ],
     "jsRules": {},
     "rules": {
-        "arrow-parens": false,
         "interface-name": false,
-        "one-line": false,
         "curly": false,
+        "arrow-parens": false,
+        "one-line": false,
         "object-literal-sort-keys": [
             true,
             "match-declaration-order"
-        ],
-        "max-classes-per-file": false,
-        "class-name": false
+        ]
     },
     "rulesDirectory": []
 }

@@ -22,7 +22,9 @@ build:
     - npm run compile
   artifacts:
     paths:
-      - obj
+      - node
+      - module
+      - types
 
 test:
   tags:
@@ -36,8 +38,6 @@ test:
   artifacts:
     paths:
       - report
-  except:
-    - tags
 
 publish-module:
   tags:
