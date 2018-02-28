@@ -41,6 +41,8 @@ export function buildApi(apiDescriptor: SteamApiDescriptor) {
     return [
         "// tslint:disable:max-line-length",
         "// tslint:disable:variable-name",
+        "// tslint:disable:max-classes-per-file",
+        "// tslint:disable:class-name",
         code,
     ].join("\n");
 }
