@@ -8,9 +8,9 @@ export class SteamApi extends SteamApiBase {
     public readonly IGCVersion_205790 = new IGCVersion_205790(this);
     public readonly IGCVersion_440 = new IGCVersion_440(this);
     public readonly IGCVersion_570 = new IGCVersion_570(this);
+    public readonly IGCVersion_583950 = new IGCVersion_583950(this);
     public readonly IGCVersion_730 = new IGCVersion_730(this);
     public readonly IPortal2Leaderboards_620 = new IPortal2Leaderboards_620(this);
-    public readonly IPortal2Leaderboards_841 = new IPortal2Leaderboards_841(this);
     public readonly ISteamApps = new ISteamApps(this);
     public readonly ISteamDirectory = new ISteamDirectory(this);
     public readonly ISteamEnvoy = new ISteamEnvoy(this);
@@ -23,6 +23,7 @@ export class SteamApi extends SteamApiBase {
     public readonly ISteamWebUserPresenceOAuth = new ISteamWebUserPresenceOAuth(this);
     public readonly ITFSystem_440 = new ITFSystem_440(this);
     public readonly IPlayerService = new IPlayerService(this);
+    public readonly IGameNotificationsService = new IGameNotificationsService(this);
     public readonly IAccountRecoveryService = new IAccountRecoveryService(this);
 }
 export class IGCVersion_205790 extends SteamInterfaceBase {
@@ -58,6 +59,17 @@ export class IGCVersion_570 extends SteamInterfaceBase {
         return this.fetch("GET", "GetServerVersion", 1, {});
     }
 }
+export class IGCVersion_583950 extends SteamInterfaceBase {
+    constructor(api: SteamApi) {
+        super("IGCVersion_583950", api);
+    }
+    public GetClientVersion1() {
+        return this.fetch("GET", "GetClientVersion", 1, {});
+    }
+    public GetServerVersion1() {
+        return this.fetch("GET", "GetServerVersion", 1, {});
+    }
+}
 export class IGCVersion_730 extends SteamInterfaceBase {
     constructor(api: SteamApi) {
         super("IGCVersion_730", api);
@@ -69,14 +81,6 @@ export class IGCVersion_730 extends SteamInterfaceBase {
 export class IPortal2Leaderboards_620 extends SteamInterfaceBase {
     constructor(api: SteamApi) {
         super("IPortal2Leaderboards_620", api);
-    }
-    public GetBucketizedData1(leaderboardName: string) {
-        return this.fetch("GET", "GetBucketizedData", 1, { leaderboardName });
-    }
-}
-export class IPortal2Leaderboards_841 extends SteamInterfaceBase {
-    constructor(api: SteamApi) {
-        super("IPortal2Leaderboards_841", api);
     }
     public GetBucketizedData1(leaderboardName: string) {
         return this.fetch("GET", "GetBucketizedData", 1, { leaderboardName });
@@ -206,6 +210,20 @@ export class IPlayerService extends SteamInterfaceBase {
     }
     public RecordOfflinePlaytime1(steamid: string, ticket: string, play_sessions: any) {
         return this.fetch("POST", "RecordOfflinePlaytime", 1, { steamid, ticket, play_sessions });
+    }
+}
+export class IGameNotificationsService extends SteamInterfaceBase {
+    constructor(api: SteamApi) {
+        super("IGameNotificationsService", api);
+    }
+    public UserCreateSession1(appid: number, context: string, title: any, users: any, steamid: string) {
+        return this.fetch("POST", "UserCreateSession", 1, { appid, context, title, users, steamid });
+    }
+    public UserUpdateSession1(sessionid: string, appid: number, title: any, users: any, steamid: string) {
+        return this.fetch("POST", "UserUpdateSession", 1, { sessionid, appid, title, users, steamid });
+    }
+    public UserDeleteSession1(sessionid: string, appid: number, steamid: string) {
+        return this.fetch("POST", "UserDeleteSession", 1, { sessionid, appid, steamid });
     }
 }
 export class IAccountRecoveryService extends SteamInterfaceBase {
