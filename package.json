@@ -10,9 +10,6 @@
     "module/**/*",
     "types/**/*"
   ],
-  "bin": {
-    "steam-api": "./node/cli.js"
-  },
   "scripts": {
     "prepare": "npm run compile",
     "compile": "tsc && tsc --project tsconfig.module.json",
