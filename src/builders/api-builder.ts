@@ -32,17 +32,15 @@ export function buildApi(apiDescriptor: SteamApiDescriptor) {
     const resultFile = ts.createSourceFile(
         "", "", ts.ScriptTarget.Latest, false, ts.ScriptKind.TS,
     );
-    resultFile.statements = apiNodeList;
 
     const printer = ts.createPrinter({
         newLine: ts.NewLineKind.LineFeed,
     });
-    const code = printer.printFile(resultFile);
+
+    const code = printer.printList(ts.ListFormat.MultiLine, apiNodeList, resultFile);
+
     return [
-        "// tslint:disable:max-line-length",
-        "// tslint:disable:variable-name",
-        "// tslint:disable:max-classes-per-file",
-        "// tslint:disable:class-name",
+        "/* eslint-disable */",
         code,
     ].join("\n");
 }
@@ -155,7 +153,10 @@ function createSteamInterfaceClass(interfaceDescriptor: SteamInterfaceDescriptor
 function createSteamInterfaceMember(interfaceDescriptor: SteamInterfaceDescriptor) {
     const methodMemberItem = ts.createProperty(
         [],
-        [ts.createToken(ts.SyntaxKind.PublicKeyword), ts.createToken(ts.SyntaxKind.ReadonlyKeyword)],
+        [
+            ts.createToken(ts.SyntaxKind.PublicKeyword),
+            ts.createToken(ts.SyntaxKind.ReadonlyKeyword),
+        ],
         interfaceDescriptor.name,
         undefined,
         undefined,

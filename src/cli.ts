@@ -5,8 +5,6 @@ import { SteamApi } from "./main";
 main(process.argv.slice(2));
 
 async function main(args: string[]) {
-    // tslint:disable:no-console
-
     if (args.length < 2) {
         console.log(`
 usage: steam-api <ServiceName> <MethodName> <...MethodArg>
