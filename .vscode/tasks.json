@@ -2,11 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "npm",
-            "script": "compile",
-            "label": "build",
+            "type": "typescript",
+            "label": "watch",
+            "tsconfig": "tsconfig.json",
+            "option": "watch",
             "problemMatcher": [
-                "$tsc"
+                "$tsc-watch"
             ],
             "group": {
                 "kind": "build",
@@ -14,13 +15,14 @@
             }
         },
         {
-            "type": "typescript",
-            "label": "watch",
-            "tsconfig": "tsconfig.json",
-            "option": "watch",
-            "problemMatcher": [
-                "$tsc-watch"
-            ]
+            "type": "npm",
+            "script": "coverage",
+            "problemMatcher": [],
+            "label": "npm: coverage",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         }
     ]
 }

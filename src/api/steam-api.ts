@@ -1,7 +1,4 @@
-// tslint:disable:max-line-length
-// tslint:disable:variable-name
-// tslint:disable:max-classes-per-file
-// tslint:disable:class-name
+/* eslint-disable */
 import { SteamApiBase } from "./steam-api-base";
 import { SteamInterfaceBase } from "./steam-interface-base";
 export class SteamApi extends SteamApiBase {
